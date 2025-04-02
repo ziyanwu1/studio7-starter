@@ -28,12 +28,21 @@ dom.tasksList.addEventListener("keydown", e => {
 
 	if (e.key === "Enter" && !e.repeat) {
 		addItem();
-	}
-	else if (e.key === "Backspace" && e.target.value.length === 0 && !e.repeat) {
+	} else if (e.key === "Backspace" && e.target.value.length === 0 && !e.repeat) {
 		const previousSibling = li.previousElementSibling;
 		li.querySelector(".delete").click();
 		focusTask(previousSibling ?? dom.tasksList.firstElementChild);
 		e.preventDefault(); // prevent data corruption
+	} else if (e.key === "ArrowUp") {
+		const previous = li.previousElementSibling;
+		if (previous) {
+			focusTask(previous);
+		}
+	} else if (e.key === "ArrowDown") {
+		const next = li.nextElementSibling;
+		if (next) {
+			focusTask(next);
+		}
 	}
 });
 
