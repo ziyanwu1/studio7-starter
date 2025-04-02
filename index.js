@@ -95,3 +95,7 @@ function updateCounts () {
 	updateDoneCount();
 	updateTotalCount();
 }
+
+document.getElementById("tasks_list").addEventListener("change", () => {
+	updateDoneCount();
+});
