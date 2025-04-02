@@ -73,7 +73,11 @@ export function addItem (data = { done: false, title: "" }) {
  * Delete all tasks that are marked as done
  */
 export function clearCompleted () {
-	// TODO implement this (see step 4)
+	const checked = dom.tasksList.querySelectorAll(".done:checked");
+	for (const box of checked) {
+		const parent = box.parentElement;
+		parent.querySelector(".delete").click();
+	}
 }
 
 /**
