@@ -96,6 +96,21 @@ function updateCounts () {
 	updateTotalCount();
 }
 
-document.getElementById("tasks_list").addEventListener("change", () => {
+document.getElementById("tasks_list").addEventListener("click", (event) => {
+	if (event.target.classList.contains("delete")) {
+		const parent = event.target.parentElement;
+		const previous = parent.previousElementSibling;
+		const next = parent.nextElementSibling;
+
+		parent.remove();
+		if (previous) {
+			focusTask(previous);
+		} else if (next) {
+			focusTask(next);
+		}
+
+		updateTotalCount();
+	}
+
 	updateDoneCount();
 });
